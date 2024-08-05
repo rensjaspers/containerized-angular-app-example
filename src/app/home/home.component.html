@@ -1,0 +1,19 @@
+<h2>Home</h2>
+
+@let todos = items();
+
+@switch (todos.status) {
+  @case ("loading") {
+    loading...
+  }
+  @case ("success") {
+    <ul>
+      @for (todo of todos.data; track todo.id) {
+        <li>{{ todo.title }}</li>
+      }
+    </ul>
+  }
+  @case ("error") {
+    <p>{{ todos.error.message }}</p>
+  }
+}
